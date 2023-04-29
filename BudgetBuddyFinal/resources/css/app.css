@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=fallback');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import '../js/Components/mosaic/css/additional-styles/utility-patterns.css';
+@import '../js/Components/mosaic/css/additional-styles/range-slider.css';
+@import '../js/Components/mosaic/css/additional-styles/toggle-switch.css';
+@import '../js/Components/mosaic/css/additional-styles/flatpickr.css';
+@import '../js/Components/mosaic/css/additional-styles/theme.css';
+
+@import 'tailwindcss/utilities';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
