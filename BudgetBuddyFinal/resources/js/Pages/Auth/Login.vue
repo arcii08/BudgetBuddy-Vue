@@ -30,65 +30,54 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Log in" />
-
-        <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
-            {{ status }}
-        </div>
-
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
+    <Head title="Iniciar Sesión" />
+    <div class="w-screen bg-[#d8eefe] h-screen flex items-center justify-center gap-24">
+        <div class="text-center justify-center align-content-center w-[550px]">
+            <h1 class="text-bold text-5xl leading-10 text-left">¡Bienvenido de nuevo!</h1>
+            <form @submit.prevent="submit" class="pt-10">
+                <InputLabel for="email" value="Correo" class="text-left text-bold text-[24px]" />
+                <TextInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus
+                    autocomplete="username" />
 
                 <InputError class="mt-2" :message="form.errors.email" />
-            </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <div class="mt-4">
+                    <InputLabel for="password" value="Contraseña" class="text-left text-bold text-[24px]" />
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
+                    <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required
+                        autocomplete="current-password" />
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                    <InputError class="mt-2" :message="form.errors.password" />
+                </div>
 
-            <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
-            </div>
+                <div class="block mt-4">
+                    <label class="flex text-center">
+                        <Checkbox name="remember" v-model:checked="form.remember" />
+                        <span class="flex-1 ml-2 text-gray-600 text-left hover:text-gray-900 re">Recuérdame</span>
+                        <Link :href="route('register')"
+                            class="flex ml-2 text-gray-600 text-right hover:text-gray-900 underline">
+                        ¿Aún no estás registrado?</Link>
+                    </label>
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Forgot your password?
-                </Link>
+                </div>
 
-                <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                <div class="flex items-center justify-end mt-4 gap-2">
+                    <Link v-if="canResetPassword" :href="route('password.request')"
+                        class="underline text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    ¿Has olvidado tu contraseña?
+                    </Link>
+
+                    <PrimaryButton class="ml-4 text-[20px]" :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing">
+                        Iniciar Sesión
+                    </PrimaryButton>
+                </div>
+            </form>
+        </div>
+        <div class="flex justify-center items-center">
+            <img src="../../../static/person_login_dos.svg" alt="Imagen" class="object-cover h-[400px]">
+        </div>
+    </div>
 </template>
+<script>
+</script>
