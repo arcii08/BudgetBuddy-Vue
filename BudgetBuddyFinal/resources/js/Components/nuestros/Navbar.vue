@@ -1,28 +1,51 @@
-<template>
-    <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <img class="h-8 w-8" src="" alt="Logo">
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        <router-link to="/"
-                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700">Home</router-link>
-                        <router-link to="/about"
-                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700">Sobre
-                            nosotros</router-link>
-                        <router-link to="/contact"
-                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700">Contacto</router-link>
-                        <router-link to="/login"
-                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700">Login</router-link>
-                        <router-link to="/register"
-                            class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 hover:bg-gray-700">Register</router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</template>
-<script>
+<script setup>
+import { Link } from "@inertiajs/vue3";
+defineProps({
+    canLogin: {
+        type: Boolean,
+    },
+    canRegister: {
+        type: Boolean,
+    },
+    laravelVersion: {
+        type: String,
+        required: true,
+    },
+    phpVersion: {
+        type: String,
+        required: true,
+    },
+});
+
+const navigation = [
+    {name: "INICIO", href: "/"},
+    { name: "SOBRE NOSOTROS", href: "/about-us" },
+    { name: "CONTACTO", href: "/contact" },
+    { name: "BLOG", href: "/blog" },
+    { name: "AHORRO", href: "/ahorro" },
+];
 </script>
+<template>
+    <!-- EMPIEZA EL NAVBAR -->
+    <header class="sticky top-0 inset-x-0 top-z-50 bg-[#d8eefe] shadow-md">
+        <nav class="flex items-center justify-between p-0 lg:px-8 text-[#112A46]" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <a href="/" class="">
+                    <img class="h-28 duration-200 hover:scale-110" src="../../../static/nuevoLogo.svg" alt="Imagen logo" />
+                </a>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                <Link v-for="item in navigation" :key="item.name" :href="item.href"
+                    class="text-sm font-bold leading-6 duration-200 hover hover:scale-110">{{ item.name }}</Link>
+            </div>
+            <div class="lg:flex lg:flex-1 lg:justify-end text-[#112A46]">
+                <Link :href="route('login')" class="font-bold duration-200 hover:scale-110">INICIAR SESIÓN
+                </Link>
+            </div>
+            <div class="lg:flex lg:justify-end pl-5 text-[#112A46]">
+                <Link :href="route('register')" class="font-bold duration-200 hover:scale-110">REGÍSTRATE</Link>
+            </div>
+        </nav>
+    </header>
+    <!-- TERMINA EL NAVBAR -->
+</template>

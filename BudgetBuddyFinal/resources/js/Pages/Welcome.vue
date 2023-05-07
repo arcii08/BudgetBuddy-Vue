@@ -5,30 +5,36 @@ import Feature from "../Components/nuestros/Feature.vue";
 import FeaturesDos from "../Components/nuestros/FeaturesDos.vue";
 import FeaturesTres from "../Components/nuestros/FeaturesTres.vue";
 import FeatureCuatro from "../Components/nuestros/FeatureCuatro.vue";
+import Navbar from "../Components/nuestros/Navbar.vue";
+import { ref } from "vue";
+import { Transition } from "vue";
+import Favicon from '../../static/favicon.svg'
 
-defineProps({
-    canLogin: {
-        type: Boolean,
-    },
-    canRegister: {
-        type: Boolean,
-    },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
-    },
-});
 </script>
 
 <template>
-    <Head title="Budget Buddy" />
-    <Hero></Hero>
-    <Feature />
-    <FeaturesTres></FeaturesTres>
-    <!-- <FeaturesDos></FeaturesDos> -->
-    <FeatureCuatro></FeatureCuatro>
+    <Transition appear>
+        <div>
+            <Head title="Budget Buddy" />
+            <Navbar></Navbar>
+            <Hero></Hero>
+            <Feature />
+            <FeaturesTres></FeaturesTres>
+            <!-- <FeaturesDos></FeaturesDos> -->
+            <FeatureCuatro></FeatureCuatro>
+        </div>
+    </Transition>
 </template>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 1s ease-in, transform 1s ease-in-out;
+    transform: translateY(0px);
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+    transform: translateY(100px);
+}
+</style>
