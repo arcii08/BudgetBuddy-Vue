@@ -27,8 +27,8 @@ const navigation = [
 </script>
 <template>
     <!-- EMPIEZA EL NAVBAR -->
-    <header class="sticky top-0 inset-x-0 top-z-50 bg-[#d8eefe] shadow-md">
-        <nav class="flex items-center justify-between p-0 lg:px-8 text-[#112A46]" aria-label="Global">
+    <header class="sticky top-0 inset-x-0 top-z-50 shadow-md">
+        <nav class="bg-[#d8eefe] flex items-center justify-between p-0 lg:px-8 text-[#112A46] h-20" aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="/" class="">
                     <img class="h-28 duration-200 hover:scale-110" src="../../../static/nuevoLogo.svg" alt="Imagen logo" />
@@ -39,7 +39,7 @@ const navigation = [
                     class="text-sm font-bold leading-6 duration-200 hover hover:scale-110">{{ item.name }}</Link>
             </div>
             <div class="lg:flex lg:flex-1 lg:justify-end text-[#112A46]">
-                <Link :href="route('login')" class="font-bold duration-200 hover:scale-110">INICIAR SESIÓN
+                <Link :href="route('login')" class="font-bold duration-200 hover:scale-110">INICIA SESIÓN
                 </Link>
             </div>
             <div class="lg:flex lg:justify-end pl-5 text-[#112A46]">

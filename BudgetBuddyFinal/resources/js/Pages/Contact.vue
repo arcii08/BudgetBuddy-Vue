@@ -1,4 +1,5 @@
 <template>
+    <Head title="Contacto"></Head>
     <Navbar></Navbar>
     <div class="items-center py-2 bg-[#1B3755] text-white">
         <div class="justify-center w-full mx-auto">
@@ -84,4 +85,5 @@
 </div></template>
 <script setup>
 import Navbar from '../Components/nuestros/Navbar.vue';
+import { Head } from '@inertiajs/vue3';
 </script>
