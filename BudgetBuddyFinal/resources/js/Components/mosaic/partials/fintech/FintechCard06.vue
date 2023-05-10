@@ -141,7 +141,7 @@
         </div>
 
         <div class="text-center border-t border-slate-100 px-2">
-          <a class="block text-sm font-medium text-indigo-500 hover:text-indigo-600 pt-4 pb-1" href="#0">Ver más -&gt;</a>
+          <a class="block text-sm font-medium text-indigo-500 hover:text-indigo-600 pt-4 pb-1" href="/incomes">Ver más -&gt;</a>
         </div>
 
       </div>
