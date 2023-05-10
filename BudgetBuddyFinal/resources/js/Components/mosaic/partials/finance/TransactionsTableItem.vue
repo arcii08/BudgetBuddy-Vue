@@ -19,15 +19,10 @@
     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
       <div class="text-left">{{transaction.date}}</div>
     </td>
-    <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-      <div class="text-left">
-        <div class="text-xs inline-flex font-medium rounded-full text-center px-2.5 py-1" :class="statusColor(transaction.status)">{{transaction.status}}</div>
-      </div>
-    </td>
     <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
       <div class="text-right font-medium" :class="amountColor(transaction.amount)">{{transaction.amount}}</div>
-    </td>    
-  </tr>  
+    </td>
+  </tr>
 </template>
 
 <script>
@@ -59,7 +54,7 @@ export default {
           return 'bg-slate-100 text-slate-500'
       }
     }
-    
+
     const amountColor = (amount) => {
       switch (amount.charAt(0)) {
         case '+':
@@ -67,7 +62,7 @@ export default {
         default:
           return 'text-slate-700'
       }
-    }    
+    }
 
     return {
       check,

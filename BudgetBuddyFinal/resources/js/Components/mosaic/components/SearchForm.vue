@@ -1,6 +1,6 @@
 <template>
   <form class="relative">
-    <label for="action-search" class="sr-only">Search</label>
+    <label for="action-search" class="sr-only">Buscar</label>
     <input id="action-search" class="form-input pl-9 focus:border-slate-300" type="search" :placeholder="placeholder" />
     <button class="absolute inset-0 right-auto group" type="submit" aria-label="Search">
       <svg class="w-4 h-4 shrink-0 fill-current text-slate-400 group-hover:text-slate-500 ml-3 mr-2" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@ export default {
   name: 'SearchForm',
   props: {
     placeholder: {
-      default: 'Search…'      
+      default: 'Buscar...'
     }
   }
 }
