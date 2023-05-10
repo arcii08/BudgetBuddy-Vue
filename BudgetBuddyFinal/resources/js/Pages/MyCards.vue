@@ -29,12 +29,12 @@
     </div>
     <div class="py-8 bg-[#fffffe] relative h-screen">
         <div class="max-w-7xl mx-auto">
-            <h1 class="font-bold text-4xl">ESTAS SON TUS TARJETAS</h1>
-
+            <Tarjetas></Tarjetas>
         </div>
     </div>
 </template>
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import Tarjetas from '../Components/nuestros/Tarjetas.vue';
 import AuthenticatedLayout from '../Layouts/AuthenticatedLayout.vue';
 </script>
