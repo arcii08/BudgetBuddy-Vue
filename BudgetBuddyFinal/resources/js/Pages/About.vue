@@ -6,7 +6,7 @@ import Navbar from "../Components/nuestros/Navbar.vue";
 <template>
     <Head title="Sobre Nosotros"></Head>
     <Navbar></Navbar>
-    <div class="items-center py-2 bg-[#1B3755] text-white">
+    <!-- <div class="items-center py-2 bg-[#1B3755] text-white">
         <div class="justify-center w-full mx-auto">
             <nav class="flex mx-auto px-12 " aria-label="Breadcrumb">
                 <ol role="list" class="flex items-center space-x-4">
@@ -31,8 +31,8 @@ import Navbar from "../Components/nuestros/Navbar.vue";
                 </ol>
             </nav>
         </div>
-    </div>
-    <div class="flex w-screen py-20 bg-[#fffffe] justify-center items-center px-9 text-[#094067]">
+    </div> -->
+    <div class="flex w-screen h-screen bg-[#fffffe] justify-center items-center px-9 text-[#094067]">
         <div class="flex-1">
             <h1 class="text-center font-bold text-5xl">DESCUBRE MÁS SOBRE BUDGET BUDDY</h1>
         </div>

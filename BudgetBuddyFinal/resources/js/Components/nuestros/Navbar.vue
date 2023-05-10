@@ -22,7 +22,6 @@ const navigation = [
     { name: "SOBRE NOSOTROS", href: "/about-us" },
     { name: "CONTACTO", href: "/contact" },
     { name: "BLOG", href: "/blog" },
-    { name: "AHORRO", href: "/ahorro" },
 ];
 </script>
 <template>

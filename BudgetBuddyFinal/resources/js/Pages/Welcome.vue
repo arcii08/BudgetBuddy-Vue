@@ -8,7 +8,7 @@ import FeatureCuatro from "../Components/nuestros/FeatureCuatro.vue";
 import Navbar from "../Components/nuestros/Navbar.vue";
 import { ref } from "vue";
 import { Transition } from "vue";
-import Favicon from '../../static/favicon.svg'
+// import Favicon from '../../static/favicon.svg'
 
 </script>
 

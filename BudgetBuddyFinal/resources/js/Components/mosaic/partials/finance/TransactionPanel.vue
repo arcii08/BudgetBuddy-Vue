@@ -1,10 +1,10 @@
 <template>
   <div
     ref="panelContent"
-    class="absolute inset-0 sm:left-auto z-20 shadow-xl transition-transform duration-200 ease-in-out"
+    class="absolute inset-0 sm:left-auto shadow-xl transition-transform duration-200 ease-in-out"
     :class="transactionPanelOpen ? 'translate-x-0' : 'translate-x-full'"
   >
-    <div class="sticky top-16 bg-slate-50 overflow-x-hidden overflow-y-auto no-scrollbar shrink-0 border-l border-slate-200 w-full sm:w-[390px] h-[calc(100vh-64px)]">
+    <div class="border-l border-slate-200 w-full h-screen">
 
       <button ref="closeBtn" @click.stop="$emit('close-transactionpanel')" class="absolute top-0 right-0 mt-6 mr-6 group p-2">
         <svg class="w-4 h-4 fill-slate-400 group-hover:fill-slate-600 pointer-events-none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
               <div class="mb-3 text-center">
                 <img class="inline-flex w-12 h-12 rounded-full -mt-6" src="../../images/transactions-image-04.svg" width="48" height="48" alt="Transaction 04" />
               </div>
-              <div class="text-2xl font-semibold text-emerald-500 mb-1">+$2,179.36</div>
+              <div class="text-2xl font-semibold text-emerald-500 mb-1">+€2,179.36</div>
               <div class="text-sm font-medium text-slate-800 mb-3">Acme LTD UK</div>
               <div class="text-xs inline-flex font-medium bg-slate-100 text-slate-500 rounded-full text-center px-2.5 py-1">Pending</div>
             </div>
@@ -146,11 +146,11 @@ export default {
       document.removeEventListener('click', clickHandler)
       document.removeEventListener('keydown', keyHandler)
     })
-    
+
     return {
       panelContent,
       closeBtn,
-    }    
+    }
   }
 }
 </script>

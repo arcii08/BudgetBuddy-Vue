@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 /*
@@ -42,6 +43,18 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/expenses', function(){
+    return Inertia::render('Expenses');
+})->middleware(['auth', 'verified'])->name('expenses');
+
+Route::get('/incomes', function(){
+    return Inertia::render('Incomes');
+})->middleware(['auth', 'verified'])->name('incomes');
+
+Route::get('/my-cards', function(){
+    return Inertia::render('MyCards');
+})->middleware(['auth', 'verified'])->name('my-cards');
 
 Route::get('/about-us', function () {
     return Inertia::render('About', [

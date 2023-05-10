@@ -1,7 +1,7 @@
 <template>
     <Head title="Blog"></Head>
     <Navbar></Navbar>
-    <div class="items-center py-2 bg-[#1B3755] text-white">
+    <!-- <div class="items-center py-2 bg-[#1B3755] text-white">
         <div class="justify-center w-full mx-auto">
             <nav class="flex px-12 mx-auto " aria-label="Breadcrumb">
                 <ol role="list" class="flex items-center space-x-4">
@@ -26,8 +26,8 @@
                 </ol>
             </nav>
         </div>
-    </div>
-    <section class="relative bg-[#fffffe] w-screen h-screen">
+    </div> -->
+    <section class="bg-[#fffffe] w-screen h-screen">
         <div class="items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
             <ol class="grid grid-cols-1 gap-3 lg:grid-cols-2 sm:grid-cols-2" role="list">
                 <li class="space-y-3 px-3 py-2.5 lg:px-6 lg:py-5  bg-white">
