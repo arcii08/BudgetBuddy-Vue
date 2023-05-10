@@ -12,6 +12,7 @@ import FintechCard06 from '@/Components/mosaic/partials/fintech/FintechCard06.vu
 import FintechCard07 from '@/Components/mosaic/partials/fintech/FintechCard07.vue';
 import FintechCard08 from '@/Components/mosaic/partials/fintech/FintechCard08.vue';
 import FintechCard09 from '@/Components/mosaic/partials/fintech/FintechCard09.vue';
+import Footer from '@/Components/Footer.vue';
 </script>
 
 <template>
@@ -88,6 +89,9 @@ import FintechCard09 from '@/Components/mosaic/partials/fintech/FintechCard09.vu
                     </div>
                 </main>
             </div>
+
         </div>
+        <Footer />
+
     </AuthenticatedLayout>
 </template>
