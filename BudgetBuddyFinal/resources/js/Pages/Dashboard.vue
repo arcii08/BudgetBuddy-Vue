@@ -80,11 +80,3 @@ import FintechCard09 from '@/Components/mosaic/partials/fintech/FintechCard09.vu
         </div>
     </div>
 </template>
-<style>
-#dashboard_page {
-    background-image: url('../../static/blur.jpg');
-    background-repeat: repeat-x;
-    background-repeat: repeat-y;
-    /* background-size: 700px 350px; */
-}
-</style>
