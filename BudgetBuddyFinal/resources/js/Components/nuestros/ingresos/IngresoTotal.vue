@@ -1,8 +1,7 @@
 <template>
-    <div class="h-screen">
-
+    <div class="h-screen grid">
         <!-- Content area -->
-        <div class="relative flex flex-col flex-1">
+        <div class="flex flex-col flex-1">
             <main>
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <h1 class="font-bold text-4xl pb-2">ESTOS SON TUS INGRESOS</h1>
@@ -18,7 +17,7 @@
                         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
                             <!-- Delete button -->
-                            <DeleteButton :selectedItems="selectedItems" />
+
 
                             <!-- Search form -->
                             <div class="hidden sm:block">
@@ -26,7 +25,7 @@
                             </div>
 
                             <!-- Export button -->
-                            <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">Exportar Transacciones</button>
+                            <button class="btn bg-[#3da9fc] hover:bg-[#3da9fc] text-white">Exportar Transacciones</button>
                         </div>
                     </div>
 
@@ -35,7 +34,7 @@
                         <DropdownTransaction />
                     </div>
                     <!-- Table -->
-                    <IngresoTabla @change-selection="updateSelectedItems($event)" />
+                    <IngresosTodos></IngresosTodos>
 
                     <!-- Pagination -->
                     <div class="mt-8">
@@ -49,37 +48,10 @@
     </div>
 </template>
 
-<script>
-import { ref } from 'vue'
-import Header from '../../../Components/mosaic/partials/Header.vue'
-import DeleteButton from '../../../Components/mosaic/partials/actions/DeleteButton.vue'
+<script setup>
+import DropdownTransaction from '../../../Components/mosaic/components/DropdownTransaction.vue';
 import SearchForm from '../../../Components/mosaic/components/SearchForm.vue';
-import DropdownTransaction from '../../../Components/mosaic/components/DropdownTransaction.vue'
-import IngresoTabla from '../ingresos/IngresoTabla.vue'
-import PaginationClassic from '../../../Components/mosaic/components/PaginationClassic.vue'
 
-export default {
-    name: 'Transactions',
-    components: {
-        Header,
-        DeleteButton,
-        SearchForm,
-        DropdownTransaction,
-        IngresoTabla,
-        PaginationClassic,
-    },
-    setup() {
-
-        const selectedItems = ref([])
-
-        const updateSelectedItems = (selected) => {
-            selectedItems.value = selected
-        }
-
-        return {
-            selectedItems,
-            updateSelectedItems,
-        }
-    }
-}
+import PaginationClassic from '../../../Components/mosaic/components/PaginationClassic.vue';
+import IngresosTodos from './IngresosTodos.vue';
 </script>

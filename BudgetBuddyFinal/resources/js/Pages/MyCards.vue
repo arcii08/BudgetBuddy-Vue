@@ -27,8 +27,8 @@
             </nav>
         </div>
     </div>
-    <div class="py-8 bg-[#fffffe] relative h-screen">
-        <div class="max-w-7xl mx-auto">
+    <div class="py-8">
+        <div class="">
             <Tarjetas></Tarjetas>
         </div>
     </div>

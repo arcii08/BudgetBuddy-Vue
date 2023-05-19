@@ -12,7 +12,6 @@ import FintechCard06 from '@/Components/mosaic/partials/fintech/FintechCard06.vu
 import FintechCard07 from '@/Components/mosaic/partials/fintech/FintechCard07.vue';
 import FintechCard08 from '@/Components/mosaic/partials/fintech/FintechCard08.vue';
 import FintechCard09 from '@/Components/mosaic/partials/fintech/FintechCard09.vue';
-import Footer from '@/Components/Footer.vue';
 </script>
 
 <template>
@@ -21,7 +20,7 @@ import Footer from '@/Components/Footer.vue';
     <!-- <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
         </template>-->
-    <div class="py-8 bg-[#fffffe]">
+    <div class="py-8 bg-[#fffffe]" id="dashboard_page">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-sky-500">
                 <p class="p-6 text-gray-900">Bienvenido {{ $page.props.auth.user.name }}, te presentamos un resumen
@@ -52,19 +51,9 @@ import Footer from '@/Components/Footer.vue';
                         </div>
 
                     </div>
-<<<<<<< HEAD
-                </main>
-            </div>
-
-        </div>
-        <Footer />
-
-    </AuthenticatedLayout>
-=======
 
                     <!-- Cards -->
                     <div class="grid grid-cols-12 gap-6">
-
                         <!-- Page Intro -->
                         <FintechIntro />
                         <!-- Line chart (Portfolio Returns) -->
@@ -90,5 +79,12 @@ import Footer from '@/Components/Footer.vue';
             </main>
         </div>
     </div>
->>>>>>> main
 </template>
+<style>
+#dashboard_page {
+    background-image: url('../../static/blur.jpg');
+    background-repeat: repeat-x;
+    background-repeat: repeat-y;
+    /* background-size: 700px 350px; */
+}
+</style>

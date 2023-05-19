@@ -27,9 +27,18 @@
             </nav>
         </div>
     </div>
-    <div class="py-8 bg-[#fffffe] relative h-screen">
-        <div class="max-w-7xl mx-auto">
+    <div class="py-8 bg-[#fffffe] h-screen">
+        <!-- <div class="max-w-7xl mx-auto">
+            <FormIngreso></FormIngreso>
             <IngresoTotal></IngresoTotal>
+        </div> -->
+        <div id="main" class="m-8 grid grid-cols-3 gap-1">
+            <div class="col-span-2 rounded-lg h-12">
+                <IngresoTotal @edit="editIngreso"></IngresoTotal>
+            </div>
+            <div class="h-12">
+                <FormIngreso></FormIngreso>
+            </div>
         </div>
     </div>
 </template>
@@ -37,4 +46,20 @@
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '../Layouts/AuthenticatedLayout.vue';
 import IngresoTotal from '../Components/nuestros/ingresos/IngresoTotal.vue';
+import FormIngreso from '../Components/nuestros/ingresos/FormIngreso.vue';
+</script>
+
+<script>
+export default {
+    data() {
+        return {
+            ingresoToEdit: null
+        };
+    },
+    methods: {
+        editIngreso(ingreso) {
+            this.ingresoToEdit = ingreso;
+        }
+    }
+}
 </script>

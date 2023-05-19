@@ -1,7 +1,7 @@
 <template>
     <Head title="Contacto"></Head>
     <Navbar></Navbar>
-    <div class="flex w-screen h-screen bg-[#fffffe] text-center justify-center">
+    <div class="flex w-screen bg-[#fffffe] text-center justify-center">
         <div class="flex text-center justify-center">
             <img src="../../static/contacto.svg" alt="contacto_imagen" class="h-[500px] pt-10">
         </div>
@@ -46,11 +46,15 @@
                         privacidad</a>.
                 </p>
             </div>
-
         </div>
     </div>
+    <footer>
+        <Footer></Footer>
+    </footer>
+
 </template>
 <script setup>
 import Navbar from '../Components/nuestros/Navbar.vue';
 import { Head } from '@inertiajs/vue3';
+import Footer from '../Components/Footer.vue';
 </script>

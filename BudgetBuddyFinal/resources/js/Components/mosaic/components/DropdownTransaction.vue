@@ -1,5 +1,5 @@
 <template>
-    <div class="relative inline-flex">
+    <div class="inline-flex">
         <button ref="trigger" class="inline-flex justify-center items-center group" aria-haspopup="true"
             @click.prevent="dropdownOpen = !dropdownOpen" :aria-expanded="dropdownOpen">
             <div class="flex items-center truncate">
