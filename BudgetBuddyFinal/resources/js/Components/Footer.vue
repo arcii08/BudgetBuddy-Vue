@@ -1,5 +1,5 @@
 <template>
-    <footer class="bg-[#d8eefe]" aria-labelledby="footer-heading">
+    <footer class="bg-[#fffffe]" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="px-5 py-12 mx-auto lg:py-16 md:px-12 lg:px-20">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -12,7 +12,7 @@
                 <div class="grid grid-cols-2 gap-8 mt-12 xl:mt-0 xl:col-span-2">
                     <div class="md:grid md:grid-cols-2 md:gap-8">
                         <div>
-                            <h3 class="font-semibold leading-6 uppercase text-lg text-[#094067]">
+                            <h3 class="font-semibold leading-6 uppercase text-lg text-[#ef4565]">
                                 Productos
                             </h3>
                             <ul role="list" class="mt-4 space-y-3">
@@ -39,7 +39,7 @@
                             </ul>
                         </div>
                         <div class="mt-12 md:mt-0">
-                            <h3 class="font-semibold leading-6 uppercase text-[#094067] text-lg">
+                            <h3 class="font-semibold leading-6 uppercase text-[#ef4565] text-lg">
                                 Soporte
                             </h3>
                             <ul role="list" class="mt-4 space-y-4">
@@ -72,7 +72,7 @@
                                 <h3 class="font-semibold leading-6 uppercase text-lg text-[#094067]">
                                     Suscríbete para recibir noticias.
                                 </h3>
-                                <p class="mt-4 text font-light text-[#5f6c7b] lg:ml-auto">
+                                <p class="mt-4 text font-light text-[#094067] lg:ml-auto">
                                     Las últimas noticias, artículos y herramientas en su bandeja de entrada semanalmente.
                                 </p>
                                 <div class="inline-flex items-center gap-2 mt-12 list-none lg:ml-auto">
@@ -100,7 +100,7 @@
                 </div>
             </div>
         </div>
-        <div class="px-5 pb-12 mx-auto border-t-[#094067] sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
+        <div class="px-5 pb-12 mx-auto border-t-[#ef4565] sm:px-6 md:flex md:items-center md:justify-between lg:px-20">
             <div class="flex justify-center mb-8 space-x-6 md:order-last md:mb-0">
                 <span class="inline-flex justify-center w-full gap-3 lg:ml-auto md:justify-start md:w-auto">
                     <a class="w-6 h-6 transition fill-black hover:text-blue-500">
@@ -125,8 +125,8 @@
                 </span>
             </div>
             <div class="mt-8 md:mt-0 md:order-1">
-                <span class="mt-2 text font-light text-[#5f6c7b]">
-                    Copyright © 2020 - 2021. Todos lo derechos reservados.
+                <span class="mt-2 text font-light text-gray-400">
+                    Copyright © 2021 - 2023. Todos lo derechos reservados.
                 </span>
             </div>
         </div>

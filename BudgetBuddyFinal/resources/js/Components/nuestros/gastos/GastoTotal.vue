@@ -1,7 +1,7 @@
 <template>
     <div class="h-screen">
         <!-- Content area -->
-        <div class="relative flex flex-col flex-1">
+        <div class="flex flex-col flex-1">
             <main>
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <h1 class="font-bold text-4xl pb-2">ESTOS SON TUS GASTOS</h1>
@@ -19,10 +19,6 @@
                             <!-- Delete button -->
                             <DeleteButton :selectedItems="selectedItems" />
 
-                            <!-- Search form -->
-                            <div class="hidden sm:block">
-                                <SearchForm class="hidden sm:block" />
-                            </div>
 
                             <!-- Export button -->
                             <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">Exportar Transacciones</button>

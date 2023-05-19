@@ -1,17 +1,16 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import FeatureTecnologias from '@/Components/nuestros/FeatureTecnologias.vue';
 import Hero from '@/Components/nuestros/Hero.vue';
-import Feature from "../Components/nuestros/Feature.vue";
-import FeaturesDos from "../Components/nuestros/FeaturesDos.vue";
-import FeaturesTres from "../Components/nuestros/FeaturesTres.vue";
-import FeatureCuatro from "../Components/nuestros/FeatureCuatro.vue";
-import Navbar from "../Components/nuestros/Navbar.vue";
-import { ref } from "vue";
+import { Head } from '@inertiajs/vue3';
 import { Transition } from "vue";
+import Footer from '../Components/Footer.vue';
+import Feature from "../Components/nuestros/Feature.vue";
+import FeatureCuatro from "../Components/nuestros/FeatureCuatro.vue";
+import FeaturesTres from "../Components/nuestros/FeaturesTres.vue";
+import Navbar from "../Components/nuestros/Navbar.vue";
 // import Favicon from '../../static/favicon.svg'
 
 </script>
-
 <template>
     <Transition appear>
         <div>
@@ -22,6 +21,8 @@ import { Transition } from "vue";
             <FeaturesTres></FeaturesTres>
             <!-- <FeaturesDos></FeaturesDos> -->
             <FeatureCuatro></FeatureCuatro>
+            <FeatureTecnologias></FeatureTecnologias>
+            <Footer></Footer>
         </div>
     </Transition>
 </template>
