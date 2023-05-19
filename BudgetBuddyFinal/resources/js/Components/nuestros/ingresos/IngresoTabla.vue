@@ -2,155 +2,97 @@
     <div class="bg-[#fffffe]">
         <!-- Table -->
         <div class="overflow-x-auto">
+
+
             <table class="table-auto w-full">
                 <!-- Table header -->
                 <thead class="text-xs font-semibold uppercase text-slate-500 border-t border-b border-slate-200">
                     <tr>
-                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                            <div class="flex items-center">
-                                <label class="inline-flex">
-                                    <span class="sr-only">Elige Todo</span>
-                                    <input id="parent-checkbox" class="form-checkbox" type="checkbox" @click="checkAll" />
-                                </label>
-                            </div>
+
+                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                            <div class="font-semibold text-left">Fecha Pago</div>
                         </th>
                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                             <div class="font-semibold text-left">Origen</div>
                         </th>
                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                            <div class="font-semibold text-left">Fecha Pago</div>
+                            <div class="font-semibold text-right"></div>
                         </th>
                         <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
                             <div class="font-semibold text-right">Cantidad</div>
+                        </th>
+                        <th class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                            <div class="font-semibold text-right">Acciones</div>
                         </th>
                     </tr>
                 </thead>
                 <!-- Table body -->
                 <tbody class="text-sm divide-y divide-slate-200 border-b border-slate-200">
-                    <IngresoTablaItem v-for="transaction in transactions" :key="transaction.id" :transaction="transaction"
-                        v-model:selected="selected" :value="transaction.id" />
+
+                    <tr v-for="ingreso in ingresos" :key="ingreso.id">
+
+                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap md:w-1/2">
+                            <div class="flex items-center">
+
+                                <div class="font-medium text-slate-800">{{ ingreso.fecha }}</div>
+                            </div>
+                        </td>
+                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                            <div class="text-left">{{ ingreso.descripcion }}</div>
+                        </td>
+                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                            <div class="text-left">
+                                <div
+                                    class="text-xs inline-flex font-medium rounded-full border-emerald-500 border-2 text-center px-2.5 py-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2"  class="w-6 h-6  stroke-emerald-500" >
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                            <div class="text-right font-medium text-emerald-500">
+                                + {{ ingreso.monto }} €</div>
+                        </td>
+                        <td>
+                            <router-link :to="{ name: 'ingresos.edit', params: { id: ingreso.id } }">Editar</router-link>
+                            <button @click="deleteIngreso(ingreso.id)">Eliminar</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
+
 </template>
 
 <script>
-import { ref, watch } from 'vue'
-import IngresoTablaItem from './IngresoTablaItem.vue'
-
-import Image01 from '../../../../static/transactions-image-01.svg'
-import Image02 from '../../../../static/transactions-image-02.svg'
-import Image03 from '../../../../static/user-36-05.jpg'
-import Image04 from '../../../../static/transactions-image-03.svg'
-import Image05 from '../../../../static/transactions-image-04.svg'
-import Image06 from '../../../../static/transactions-image-05.svg'
-import Image07 from '../../../../static/transactions-image-06.svg'
-import Image08 from '../../../../static/transactions-image-07.svg'
-import Image09 from '../../../../static/transactions-image-08.svg'
-
+import axios from 'axios';
 export default {
-    name: 'IngresoTabla',
-    components: {
-        IngresoTablaItem,
-    },
-    props: ['selectedItems'],
-    setup(props, { emit }) {
-
-        const selectAll = ref(false)
-        const selected = ref([])
-
-        const checkAll = () => {
-            selected.value = []
-            if (!selectAll.value) {
-                selected.value = transactions.value.map(transaction => transaction.id)
-            }
-        }
-
-        watch(selected, () => {
-            selectAll.value = transactions.value.length === selected.value.length ? true : false
-            emit('change-selection', selected.value)
-        })
-
-        const transactions = ref([
-            {
-                id: '0',
-                image: Image01,
-                name: 'Form Builder CP',
-                date: '22/01/2022',
-                amount: '+€1,299.22',
-            },
-            {
-                id: '1',
-                image: Image02,
-                name: 'Imperial Hotel ****',
-                date: '22/01/2022',
-                amount: '+€1,029.77',
-            },
-            {
-                id: '2',
-                image: Image03,
-                name: 'Aprilynne Pills',
-                date: '22/01/2022',
-                amount: '+€499.99',
-            },
-            {
-                id: '3',
-                image: Image04,
-                name: 'Google Limited UK',
-                date: '22/01/2022',
-                amount: '+€1,029.77',
-            },
-            {
-                id: '4',
-                image: Image05,
-                name: 'Acme LTD UK',
-                date: '22/01/2022',
-                amount: '+€2,179.36',
-            },
-            {
-                id: '5',
-                image: Image04,
-                name: 'Google Limited UK',
-                date: '22/01/2022',
-                amount: '+€1,029.77',
-            },
-            {
-                id: '6',
-                image: Image06,
-                name: 'Uber',
-                date: '22/01/2022',
-                amount: '+€272.88',
-            },
-            {
-                id: '7',
-                image: Image07,
-                name: 'PublicOne Inc.',
-                date: '22/01/2022',
-                amount: '+€199.87',
-            },
-            {
-                id: '8',
-                image: Image08,
-                name: 'Github Inc.',
-                date: '22/01/2022',
-                amount: '+€42.87',
-            },
-            {
-                id: '9',
-                image: Image09,
-                name: 'Form Builder PRO',
-                date: '22/01/2022',
-                amount: '+€112.44',
-            },
-        ])
-
-        return {
-            selectAll,
-            selected,
-            checkAll,
-            transactions,
-        }
-    }
+  data() {
+    return {
+      tarjetas: [],
+    };
+  },
+  created() {
+    axios.get('/ingresos-json')
+      .then(response => {
+        this.tarjetas = response.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  components: {
+    TarjetaComponente
+  }
 }
 </script>
+<script setup>
+import Componente from '../Components/nuestros/TarjetaComponente.vue';
+</script>
+
+
+

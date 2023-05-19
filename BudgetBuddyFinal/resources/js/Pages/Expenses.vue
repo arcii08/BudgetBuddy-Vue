@@ -1,8 +1,4 @@
-<script setup>
-import GastoTotal from '../Components/nuestros/gastos/GastoTotal.vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
-</script>
+
 <template>
     <Head title="Mis Gastos"></Head>
     <AuthenticatedLayout></AuthenticatedLayout>
@@ -34,7 +30,14 @@ import { Head } from '@inertiajs/vue3';
     </div>
     <div class="py-8 bg-[#fffffe] relative h-screen">
         <div class="max-w-7xl mx-auto">
+            <FormGasto></FormGasto>
             <GastoTotal></GastoTotal>
         </div>
     </div>
 </template>
+<script setup>
+import { Head } from '@inertiajs/vue3';
+import AuthenticatedLayout from '../Layouts/AuthenticatedLayout.vue';
+import GastoTotal from '../Components/nuestros/gastos/GastoTotal.vue';
+import FormGasto from '@/Components/nuestros/gastos/FormGasto.vue';
+</script>

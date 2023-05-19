@@ -18,7 +18,7 @@
                         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
                             <!-- Delete button -->
-                            <DeleteButton :selectedItems="selectedItems" />
+
 
                             <!-- Search form -->
                             <div class="hidden sm:block">
@@ -26,7 +26,7 @@
                             </div>
 
                             <!-- Export button -->
-                            <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">Exportar Transacciones</button>
+                            <button class="btn bg-[#3da9fc] hover:bg-[#3da9fc] text-white">Exportar Transacciones</button>
                         </div>
                     </div>
 
@@ -35,7 +35,7 @@
                         <DropdownTransaction />
                     </div>
                     <!-- Table -->
-                    <IngresoTabla @change-selection="updateSelectedItems($event)" />
+                  <IngresosTodos></IngresosTodos>
 
                     <!-- Pagination -->
                     <div class="mt-8">
@@ -49,37 +49,15 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import Header from '../../../Components/mosaic/partials/Header.vue'
-import DeleteButton from '../../../Components/mosaic/partials/actions/DeleteButton.vue'
+
 import SearchForm from '../../../Components/mosaic/components/SearchForm.vue';
 import DropdownTransaction from '../../../Components/mosaic/components/DropdownTransaction.vue'
-import IngresoTabla from '../ingresos/IngresoTabla.vue'
+
 import PaginationClassic from '../../../Components/mosaic/components/PaginationClassic.vue'
+import IngresosTodos from './IngresosTodos.vue';
 
-export default {
-    name: 'Transactions',
-    components: {
-        Header,
-        DeleteButton,
-        SearchForm,
-        DropdownTransaction,
-        IngresoTabla,
-        PaginationClassic,
-    },
-    setup() {
 
-        const selectedItems = ref([])
-
-        const updateSelectedItems = (selected) => {
-            selectedItems.value = selected
-        }
-
-        return {
-            selectedItems,
-            updateSelectedItems,
-        }
-    }
-}
 </script>

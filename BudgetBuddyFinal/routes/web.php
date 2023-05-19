@@ -1,13 +1,20 @@
 <?php
-
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Models\Tarjeta;
+use App\Http\Controllers\TarjetaController;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-
+use App\Http\Controllers\IngresoController;
+use App\Http\Controllers\GastoController;
+use Illuminate\Support\Facades\DB;
+use App\Models\Ingreso;
+use App\Models\Gasto;
+use App\Http\Controllers\EventController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +34,39 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+
+//Chart
+
+Route::get('/ingresos-chart-data', function () {
+    $data = Ingreso::select('monto', 'fecha')
+        ->orderBy('fecha', 'asc')
+        ->get();
+
+    return response()->json($data);
+});
+
+Route::get('/gastos-chart-data', function () {
+    $data = Gasto::select('monto', 'fecha')
+        ->orderBy('fecha', 'asc')
+        ->get();
+
+    return response()->json($data);
+});
+
+
+//
+
+Route::get('/api/ingresos-events', [CalendarController::class, 'getIngresosEvents']);
+Route::get('/api/gastos-events', [CalendarController::class, 'getGastosEvents']);
+
+Route::get('/events', function () {
+    return Inertia::render('Events');
+})->middleware(['auth', 'verified'])->name('events');
+
+
+Route::get('/ingresos-json', [IngresoController::class, 'getIngresosAsJson']);
+
+
 Route::get('/', function () {
     if (auth()->check()) {
         return Inertia::render('Dashboard');
@@ -44,16 +84,43 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/expenses', function(){
+
+Route::get('/RegisterCuenta', function () {
+    return Inertia::render('RegisterCuenta');
+})->middleware(['auth', 'verified'])->name('registercuenta');
+
+
+
+Route::get('/gastos-json', [GastoController::class, 'index'])->name('gastos.index');
+
+Route::get('/expenses', function () {
     return Inertia::render('Expenses');
 })->middleware(['auth', 'verified'])->name('expenses');
+
+Route::get('/expenses/{gasto}', [GastoController::class, 'show'])->name('gastos.show');
+Route::post('/expenses/add-expense', [GastoController::class, 'store'])->name('gastos.store');
+Route::put('/expenses/update/{id}', [GastoController::class, 'update'])->name('gastos.update');
+Route::get('/expenses/destroy/{id}', [GastoController::class, 'destroy'])->name('gastos-destroy');
+
+Route::get('/ingresos-json', [IngresoController::class, 'index'])->name('ingresos.index');
 
 Route::get('/incomes', function(){
     return Inertia::render('Incomes');
 })->middleware(['auth', 'verified'])->name('incomes');
 
-Route::get('/my-cards', function(){
-    return Inertia::render('MyCards');
+Route::get('/incomes/{ingreso}', [IngresoController::class, 'show'])->name('ingresos.show');
+Route::post('/incomes/add-income', [IngresoController::class, 'store'])->name('ingresos.store');
+Route::put('/incomes/update/{id}', [IngresoController::class, 'update'])->name('ingresos.update');
+Route::get('/incomes/edit/{id}', [IngresoController::class, 'edit'])->name('ingresos-edit');
+Route::get('/incomes/destroy/{id}', [IngresoController::class, 'destroy'])->name('ingresos-destroy');
+
+
+
+Route::get('/my-cards', function () {
+    $user = Auth::user();
+    $tarjetas = Tarjeta::where('usuario_id', $user->id)->get();
+    // $tarjetas = Tarjeta::all();
+    return Inertia::render('MyCards', ['tarjeta' => $tarjetas]);
 })->middleware(['auth', 'verified'])->name('my-cards');
 
 Route::get('/about-us', function () {
@@ -71,10 +138,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/contact', function(){
+Route::get('/contact', function () {
     return Inertia::render('Contact');
 });
-Route::get('/blog', function(){
+Route::get('/blog', function () {
     return Inertia::render('Blog');
 });
 
@@ -101,11 +168,11 @@ Route::get('/google-callback', function () {
     } else {
         // Si no, creamos el usuario
         $userNew = User::create([
-            'name'=>$user->name,
-            'email'=>$user->email,
-            'avatar'=>$user->avatar,
-            'external_id'=>$user->id,
-            'external_auth'=>'google'
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar' => $user->avatar,
+            'external_id' => $user->id,
+            'external_auth' => 'google'
         ]);
         Auth::login($userNew);
     }
@@ -143,4 +210,4 @@ Route::get('/github-callback', function () {
     return redirect('/dashboard');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

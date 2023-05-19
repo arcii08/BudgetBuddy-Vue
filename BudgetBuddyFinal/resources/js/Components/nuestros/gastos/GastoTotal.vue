@@ -10,14 +10,14 @@
 
                         <!-- Left: Title -->
                         <div class="mb-4 sm:mb-0">
-                            <h1 class="text-2xl md:text-3xl text-slate-800 font-bold">€69,420.69</h1>
+                            <h1 class="text-2xl md:text-3xl text-slate-800 font-bold"></h1>
                         </div>
 
                         <!-- Right: Actions  -->
                         <div class="grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
 
                             <!-- Delete button -->
-                            <DeleteButton :selectedItems="selectedItems" />
+
 
                             <!-- Search form -->
                             <div class="hidden sm:block">
@@ -25,7 +25,7 @@
                             </div>
 
                             <!-- Export button -->
-                            <button class="btn bg-indigo-500 hover:bg-indigo-600 text-white">Exportar Transacciones</button>
+                            <button class="btn bg-[#3da9fc] hover:bg-[#3da9fc] text-white">Exportar Transacciones</button>
                         </div>
                     </div>
 
@@ -33,8 +33,9 @@
                         <span>Transacciones desde mi </span>
                         <DropdownTransaction />
                     </div>
+
                     <!-- Table -->
-                    <GastoTabla @change-selection="updateSelectedItems($event)" />
+                    <GastoTodosVue></GastoTodosVue>
 
                     <!-- Pagination -->
                     <div class="mt-8">
@@ -48,37 +49,13 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 import Header from '../../../Components/mosaic/partials/Header.vue'
-import DeleteButton from '../../../Components/mosaic/partials/actions/DeleteButton.vue'
+
 import SearchForm from '../../../Components/mosaic/components/SearchForm.vue';
 import DropdownTransaction from '../../../Components/mosaic/components/DropdownTransaction.vue'
-import GastoTabla from '../gastos/GastoTabla.vue'
+
 import PaginationClassic from '../../../Components/mosaic/components/PaginationClassic.vue'
-
-export default {
-    name: 'Transactions',
-    components: {
-        Header,
-        DeleteButton,
-        SearchForm,
-        DropdownTransaction,
-        GastoTabla,
-        PaginationClassic,
-    },
-    setup() {
-
-        const selectedItems = ref([])
-
-        const updateSelectedItems = (selected) => {
-            selectedItems.value = selected
-        }
-
-        return {
-            selectedItems,
-            updateSelectedItems,
-        }
-    }
-}
+import GastoTodosVue from './GastoTodos.vue';
 </script>

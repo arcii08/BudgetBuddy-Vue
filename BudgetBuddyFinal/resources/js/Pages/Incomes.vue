@@ -29,6 +29,7 @@
     </div>
     <div class="py-8 bg-[#fffffe] relative h-screen">
         <div class="max-w-7xl mx-auto">
+            <FormIngreso></FormIngreso>
             <IngresoTotal></IngresoTotal>
         </div>
     </div>
@@ -37,4 +38,5 @@
 import { Head } from '@inertiajs/vue3';
 import AuthenticatedLayout from '../Layouts/AuthenticatedLayout.vue';
 import IngresoTotal from '../Components/nuestros/ingresos/IngresoTotal.vue';
+import FormIngreso from '../Components/nuestros/ingresos/FormIngreso.vue';
 </script>

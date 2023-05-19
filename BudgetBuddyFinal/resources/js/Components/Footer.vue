@@ -126,7 +126,7 @@
             </div>
             <div class="mt-8 md:mt-0 md:order-1">
                 <span class="mt-2 text font-light text-[#5f6c7b]">
-                    Copyright © 2020 - 2021. Todos lo derechos reservados.
+                    Copyright © 2023. Todos lo derechos reservados.
                 </span>
             </div>
         </div>

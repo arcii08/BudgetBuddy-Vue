@@ -11,19 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-<<<<<<< HEAD
-    <div>
-        <div class=" min-h-screen bg-gray-100">
-            <nav class="bg-sky-100 border-b border-gray-100">
-                <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-between h-16">
-                        <div class="flex">
-                            <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-=======
+
     <nav class="sticky top-0 inset-x-0 top-z-50 bg-[#d8eefe] border-b w-full shadow-md">
         <!-- Primary Navigation Menu -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,6 +41,9 @@ const showingNavigationDropdown = ref(false);
                         </NavLink>
                         <NavLink :href="route('my-cards')" :active="route().current('my-cards')">
                             Mis tarjetas
+                        </NavLink>
+                        <NavLink :href="route('events')" :active="route().current('events')">
+                            Calendario
                         </NavLink>
                     </div>
                 </div>

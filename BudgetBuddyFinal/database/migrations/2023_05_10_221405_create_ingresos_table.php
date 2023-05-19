@@ -15,17 +15,14 @@ return new class extends Migration
             $table->id();
             $table->decimal('monto', 10, 2);
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('id_usuario');
-            $table->unsignedBigInteger('cuenta_bancaria_id')->nullable();
+            $table->unsignedBigInteger('usuario_id');
+            //$table->unsignedBigInteger('cuenta_bancaria_id')->nullable();
             $table->unsignedBigInteger('tarjeta_id')->nullable();
-            $table->timestamps();
-
-
-            $table->foreign('cuenta_bancaria_id')->references('id')->on('cuentas_bancarias');
+            $table->date('fecha')->nullable();
+            //  $table->foreign('cuenta_bancaria_id')->references('id')->on('cuentas_bancarias');
             $table->foreign('tarjeta_id')->references('id')->on('tarjetas');
-            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users');
         });
-
     }
 
     /**

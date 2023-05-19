@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarjetas', function (Blueprint $table) {
+        Schema::create('gastos', function (Blueprint $table) {
             $table->id();
-            //     $table->unsignedBigInteger('cuenta_bancaria_id');
-            $table->unsignedBigInteger('usuario_id');
-            $table->string('numero');
-            $table->string('nombre_titular');
-            $table->date('fecha_expiracion')->nullable();
             $table->decimal('monto', 10, 2);
-            $table->string('cvc')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->unsignedBigInteger('usuario_id');
+            //     $table->unsignedBigInteger('cuenta_bancaria_id')->nullable();
+            $table->unsignedBigInteger('tarjeta_id')->nullable();
+            $table->date('fecha')->nullable();
             //$table->foreign('cuenta_bancaria_id')->references('id')->on('cuentas_bancarias');
+            $table->foreign('tarjeta_id')->references('id')->on('tarjetas');
             $table->foreign('usuario_id')->references('id')->on('users');
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tarjetas');
+        Schema::dropIfExists('gastos');
     }
 };

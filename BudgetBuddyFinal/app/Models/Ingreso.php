@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registro extends Model
+class Ingreso extends Model
 {
+    public $timestamps = false;
     use HasFactory;
-    protected $table = 'registro';
-
     protected $fillable = [
-        'id',
-        'email',
-        'password',
+        'descripcion',
+        'monto',
+        'fecha',
+        'usuario_id',
+        'tarjeta_id',
     ];
     public function user()
     {
