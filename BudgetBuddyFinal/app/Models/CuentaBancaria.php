@@ -8,21 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class CuentaBancaria extends Model
 {
     use HasFactory;
-
+    protected $table ='cuenta_bancaria';
     protected $fillable = [
+        'nombre_titular',
         'banco',
         'tipo_cuenta',
         'numero_cuenta',
-        'usuario_id',
+        'monto'
     ];
-
-    public function ingresos()
-    {
-        return $this->hasMany(Ingreso::class);
-    }
-
-    public function tarjetas()
-    {
-        return $this->hasMany(Tarjeta::class);
-    }
 }

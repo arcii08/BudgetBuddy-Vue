@@ -1,9 +1,7 @@
 <template>
     <div class="bg-[#fffffe]">
         <!-- Table -->
-        <div class="overflow-x-auto">
-
-
+        <div class="">
             <table class="table-auto w-full">
                 <!-- Table header -->
                 <thead class="text-xs font-semibold uppercase text-slate-500 border-t border-b border-slate-200">

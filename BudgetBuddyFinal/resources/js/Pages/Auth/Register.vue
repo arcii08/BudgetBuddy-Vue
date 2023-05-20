@@ -77,6 +77,11 @@ const submit = () => {
                     </PrimaryButton>
                 </div>
             </form>
+            <div class="flex gap-2 pt-6 w-full">
+                <a href="login-google" class="bg-[#4285F4] p-4 w-full rounded-md text-white hover:bg-indigo-700">Regístrate con
+                    Google</a>
+                <a href="login-github" class="bg-[#000] p-4 w-full rounded-md text-white hover:bg-gray-700">Regístrate con Github</a>
+            </div>
         </div>
     </div>
 </template>

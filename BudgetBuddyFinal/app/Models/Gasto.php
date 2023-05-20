@@ -16,4 +16,8 @@ class Gasto extends Model
         'usuario_id',
         'tarjeta_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'usuario_id');
+    }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Ingreso;
 use App\Models\Tarjeta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class TarjetaController extends Controller
@@ -15,14 +14,26 @@ class TarjetaController extends Controller
      */
     public function index()
     {
-        //
+        // $userId = Auth::id();
+        // $tarjetas = Tarjeta::where('usuario_id', $userId)->get();
+        // return response()->json($tarjetas);
+        // return Inertia::render('TarjetaTodas', [
+        //     'tarjetas' => $tarjetas
+        // ]);
+        $userId = Auth::id();
+        $tarjetas = Tarjeta::where('usuario_id', $userId)->get();
+        return response()->json($tarjetas);
+        // return Inertia::render('TarjetaTodas', [
+        //     'tarjetas' => $tarjetas,
+        // ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
+        //
     }
 
     /**
@@ -30,6 +41,7 @@ class TarjetaController extends Controller
      */
     public function store(Request $request)
     {
+        // Agregar tarjeta
         $request->validate([
             'nombre_titular' => 'required',
             'numero' => 'required',
@@ -50,14 +62,14 @@ class TarjetaController extends Controller
         if (!$tarjeta) {
             // La tarjeta no existe, crear una nueva
             $tarjeta = new Tarjeta();
+            $tarjeta->cuenta_bancaria_id = $request->input('cuenta_bancaria_id');
             $tarjeta->nombre_titular = $request->input('nombre_titular');
-            $tarjeta->numero = Hash::make($numeroTarjeta);
-            $tarjeta->fecha_expiracion = Hash::make($request->input('fecha_expiracion'));
-            $tarjeta->cvc = Hash::make($request->input('cvc'));
-            $tarjeta->monto = Ingreso::sum('monto');
+            $tarjeta->numero = $numeroTarjeta;
+            $tarjeta->fecha_expiracion = $request->input('fecha_expiracion');
+            $tarjeta->cvc = $request->input('cvc');
             $tarjeta->usuario_id = auth()->user()->id;
             $tarjeta->save();
-            return redirect('/my-cards')->with('success', 'Tarjeta agregada exitosamente');
+            return redirect('/my-cards');
         }
 
         // La tarjeta ya existe, puedes manejar el caso en consecuencia
@@ -69,10 +81,12 @@ class TarjetaController extends Controller
      */
     public function show(string $id)
     {
-        $tarjeta = Tarjeta::find($id);
-        return view('/my-cards', [
-            'tarjeta' => $tarjeta
-        ]);
+        // web.php y ya está, vistas con un v-if.
+        // $tarjeta = Tarjeta::find($id);
+        // return view('/my-cards', [
+        //     'tarjeta' => $tarjeta
+        // ]);
+
     }
 
     /**
@@ -80,6 +94,7 @@ class TarjetaController extends Controller
      */
     public function edit(string $id)
     {
+        //
         $tarjeta = Tarjeta::find($id);
         return view('tarjetas-edit', [
             'tarjeta' => $tarjeta
@@ -91,11 +106,11 @@ class TarjetaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //
         $tarjeta = Tarjeta::find($id);
         $tarjeta->nombre_titular = $request->nombre_titular;
         $tarjeta->numero = $request->numero;
         $tarjeta->fecha_expiracion = $request->fecha_expiracion;
-        $tarjeta->monto = Ingreso::sum('monto');
         $tarjeta->cvc = $request->cvc;
         $tarjeta->update();
         return redirect()->route('/my-cards');
@@ -106,6 +121,7 @@ class TarjetaController extends Controller
      */
     public function destroy(string $id)
     {
+        //
         $tarjeta = Tarjeta::find($id);
         $tarjeta->delete();
         return redirect('/my-cards');

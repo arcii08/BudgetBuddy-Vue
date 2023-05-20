@@ -1,8 +1,7 @@
 <template>
-    <div class="h-screen">
-
+    <div class="h-screen grid">
         <!-- Content area -->
-        <div class="relative flex flex-col flex-1">
+        <div class="flex flex-col flex-1">
             <main>
                 <div class="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
                     <h1 class="font-bold text-4xl pb-2">ESTOS SON TUS INGRESOS</h1>
@@ -35,7 +34,7 @@
                         <DropdownTransaction />
                     </div>
                     <!-- Table -->
-                  <IngresosTodos></IngresosTodos>
+                    <IngresosTodos></IngresosTodos>
 
                     <!-- Pagination -->
                     <div class="mt-8">

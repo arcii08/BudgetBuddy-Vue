@@ -7,7 +7,6 @@ import Boton from '../Boton.vue';
 
 const confirmingCardAddition = ref(false);
 const form = useForm({
-    id:'',
     descripcion: '',
     monto: '',
     fecha: '',
@@ -24,9 +23,9 @@ const closeModal = () => {
 };
 
 const resetForm = () => {
-    form.value.descripcion = '';
-    form.value.monto = '';
-    form.value.fecha = '';
+    form.descripcion = '';
+    form.monto = '';
+    form.fecha = '';
 
 };
 const submit = () => {
@@ -35,7 +34,7 @@ const submit = () => {
 </script>
 <template>
     <form @submit.prevent="submit" method="post">
-        <div class="p-6">
+        <div class="p-6 bg-[#d8eefe] rounded-xl shadow-2xl">
             <h2 class="text-lg font-medium text-gray-900">Agrega un ingreso</h2>
             <div class="mt-6 py-4">
                 <InputLabel for="descripcion" value="Descripcion" />
@@ -46,14 +45,10 @@ const submit = () => {
                     maxlength="16" />
                 <InputLabel for="fecha" value="Fecha" />
                 <TextInput id="fecha" v-model="form.fecha" type="date" class="mt-1 block w-full" />
-
             </div>
-            <div class="mt-6 flex justify-end">
-                <Boton class="ml-3" type="submit">Agregar</Boton>
+            <div class="flex mt-4 file:gap-2 text-right">
+                <Boton class="ml-3" type="submit">Aceptar</Boton>
             </div>
         </div>
     </form>
 </template>
-
-
-

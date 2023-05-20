@@ -2,7 +2,7 @@
 import { Link } from "@inertiajs/vue3";
 </script>
 <template>
-    <div class="bg-[#fffffe] w-scren h-screen">
+    <div class="w-scren h-screen" id="hero_page">
         <!-- EMPIEZA EL HERO -->
         <div class="flex items-center justify-center pt-11">
             <div class="flex-1 text-center">

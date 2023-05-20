@@ -1,5 +1,5 @@
 <template>
-  <form class="relative">
+  <form class="">
     <label for="action-search" class="sr-only">Buscar</label>
     <input id="action-search" class="form-input pl-9 focus:border-slate-300 rounded-full" type="search" :placeholder="placeholder" />
     <button class="absolute inset-0 right-auto group" type="submit" aria-label="Search">

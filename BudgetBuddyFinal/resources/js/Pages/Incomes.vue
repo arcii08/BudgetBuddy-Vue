@@ -27,10 +27,18 @@
             </nav>
         </div>
     </div>
-    <div class="py-8 bg-[#fffffe] relative h-screen">
-        <div class="max-w-7xl mx-auto">
+    <div class="py-8 bg-[#fffffe] h-screen">
+        <!-- <div class="max-w-7xl mx-auto">
             <FormIngreso></FormIngreso>
             <IngresoTotal></IngresoTotal>
+        </div> -->
+        <div id="main" class="m-8 grid grid-cols-3 gap-1">
+            <div class="col-span-2 rounded-lg h-12">
+                <IngresoTotal @edit="editIngreso"></IngresoTotal>
+            </div>
+            <div class="h-12">
+                <FormIngreso></FormIngreso>
+            </div>
         </div>
     </div>
 </template>

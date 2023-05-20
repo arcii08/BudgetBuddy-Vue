@@ -1,19 +1,12 @@
 <script setup>
 import { Link } from "@inertiajs/vue3";
+import Banner from './Banner.vue';
 defineProps({
     canLogin: {
         type: Boolean,
     },
     canRegister: {
         type: Boolean,
-    },
-    laravelVersion: {
-        type: String,
-        required: true,
-    },
-    phpVersion: {
-        type: String,
-        required: true,
     },
 });
 
@@ -27,7 +20,7 @@ const navigation = [
 <template>
     <!-- EMPIEZA EL NAVBAR -->
     <header class="sticky top-0 inset-x-0 top-z-50 shadow-md">
-        <nav class="bg-[#d8eefe] flex items-center justify-between p-0 lg:px-8 text-[#112A46] h-20" aria-label="Global">
+        <nav class="bg-[#d8eefe] flex items-center px-8 text-[#112A46] h-20 md:items"  aria-label="Global">
             <div class="flex lg:flex-1">
                 <a href="/" class="">
                     <img class="h-28 duration-200 hover:scale-110" src="../../../static/nuevoLogo.svg" alt="Imagen logo" />
@@ -46,5 +39,6 @@ const navigation = [
             </div>
         </nav>
     </header>
+    <Banner></Banner>
     <!-- TERMINA EL NAVBAR -->
 </template>

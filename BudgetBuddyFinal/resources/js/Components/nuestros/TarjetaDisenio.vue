@@ -1,7 +1,7 @@
 <template>
     <!-- Credit Card -->
     <div
-        class="relative aspect-[7/4] bg-gradient-to-tr from-slate-600 to-slate-800 p-5 rounded-xl shadow-lg overflow-hidden">
+        class="aspect-[7/4] bg-gradient-to-tr from-slate-600 to-slate-800 p-5 rounded-xl shadow-lg overflow-hidden">
         <!-- Illustration on card -->
         <div class="absolute inset-0 w-full h-full" aria-hidden="true">
             <svg class="w-full h-full" width="326" height="190" viewBox="0 0 326 190" xmlns="http://www.w3.org/2000/svg">

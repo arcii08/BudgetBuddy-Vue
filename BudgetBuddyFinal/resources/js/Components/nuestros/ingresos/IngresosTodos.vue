@@ -26,7 +26,9 @@
             </thead>
             <tbody v-for="ingreso in sortedIngresos" :key="ingreso.id" class="divide-y divide-gray-200">
                 <IngresoComponente :ingreso="ingreso" />
-                <div class="">    <FormEditIngreso :ingreso="ingreso" /></div>
+                <div class="">
+                    <FormEditIngreso :ingreso="ingreso" />
+                </div>
             </tbody>
 
         </table>

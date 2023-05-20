@@ -1,6 +1,7 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
 import Navbar from "../Components/nuestros/Navbar.vue";
+import Footer from '../Components/Footer.vue';
 </script>
 
 <template>
@@ -154,4 +155,7 @@ import Navbar from "../Components/nuestros/Navbar.vue";
             </div>
         </div>
     </section>
+    <footer>
+        <Footer></Footer>
+    </footer>
 </template>

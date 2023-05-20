@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Ingreso;
 use App\Models\Gasto;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\CuentaBancariaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +82,23 @@ Route::get('/', function () {
     }
 });
 
+Route::post('/guardar-datos', [CuentaBancariaController::class, 'store'])->name('guardar-datos');
+// Ingresos
+Route::get('/ingresos-json', [IngresoController::class, 'index'])->name('ingresos.index');
+
+Route::get('/incomes/{ingreso}', [IngresoController::class, 'show'])->name('ingresos.show');
+Route::post('/incomes/add-income', [IngresoController::class, 'store'])->name('ingresos.store');
+Route::put('/incomes-update/{id}', [IngresoController::class, 'update'])->name('ingresos.update');
+Route::get('/incomes-destroy/{id}', [IngresoController::class, 'destroy'])->name('ingresos.destroy');
+
+// Route::get('/formulario-cb', function(){
+//     return Inertia::render('FormularioCB');
+// })->middleware(['auth', 'verified'])->name('formulario-cb');
+
+Route::get('/RegisterCuenta', function () {
+    return Inertia::render('RegisterCuenta');
+})->middleware(['auth', 'verified'])->name('registercuenta');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -104,7 +123,7 @@ Route::get('/expenses/destroy/{id}', [GastoController::class, 'destroy'])->name(
 
 Route::get('/ingresos-json', [IngresoController::class, 'index'])->name('ingresos.index');
 
-Route::get('/incomes', function(){
+Route::get('/incomes', function () {
     return Inertia::render('Incomes');
 })->middleware(['auth', 'verified'])->name('incomes');
 
@@ -114,7 +133,17 @@ Route::put('/incomes/update/{id}', [IngresoController::class, 'update'])->name('
 Route::get('/incomes/edit/{id}', [IngresoController::class, 'edit'])->name('ingresos-edit');
 Route::get('/incomes/destroy/{id}', [IngresoController::class, 'destroy'])->name('ingresos-destroy');
 
+Route::get('/tarjetas-json', [TarjetaController::class, 'index'])->name('tarjetas.index');
 
+Route::get('/cuentas-json', [CuentaBancariaController::class, 'index'])->name('cuentas.index');
+
+Route::get('/cuentas-bancarias', function () {
+    return Inertia::render('BankAccounts');
+})->middleware(['auth', 'verified'])->name('cuentas-bancarias');
+
+Route::get('/my-cards', function () {
+    return Inertia::render('MyCards');
+})->middleware(['auth', 'verified'])->name('my-cards');
 
 Route::get('/my-cards', function () {
     $user = Auth::user();
@@ -123,6 +152,30 @@ Route::get('/my-cards', function () {
     return Inertia::render('MyCards', ['tarjeta' => $tarjetas]);
 })->middleware(['auth', 'verified'])->name('my-cards');
 
+
+Route::post('/my-cards/add-card', [TarjetaController::class, 'store'])->name('tarjetas.store');
+
+// Eliminar tarjetas
+Route::get('/my-cards/destroy/{id}', [TarjetaController::class, 'destroy'])->name('tarjetas-destroy');
+
+// Route::get('/my-cards/edit/{id}', [TarjetaController::class, 'update'])->name('tarjetas-edit');
+
+
+// PRUEBAS
+// Route::get('/tarjetas', [TarjetaController::class, 'index']);
+// Route::get('/pruebas', function () {
+//     return Inertia::render('Tarjeta');
+// })->middleware(['auth', 'verified'])->name('tarjeta-todas');
+
+
+// END PRUEBAS
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// RUTAS DEL LANDING PAGE
 Route::get('/about-us', function () {
     return Inertia::render('About', [
         'canLogin' => Route::has('login'),

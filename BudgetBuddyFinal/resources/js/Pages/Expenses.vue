@@ -28,7 +28,7 @@
             </nav>
         </div>
     </div>
-    <div class="py-8 bg-[#fffffe] relative h-screen">
+    <div class="py-8 bg-[#fffffe] h-screen">
         <div class="max-w-7xl mx-auto">
             <FormGasto></FormGasto>
             <GastoTotal></GastoTotal>
